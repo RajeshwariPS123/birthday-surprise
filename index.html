@@ -159,14 +159,14 @@
   /* ══════════════════════════════
      SCREEN 3 — PHOTO + WISH
   ══════════════════════════════ */
-  #s3 { padding:0; }
-  #photo-bg {
+  s3 { padding:0; }
+  photo-bg {
     position:fixed; inset:0; z-index:0;
     background-size:cover; background-position:center;
     filter:brightness(0.45) saturate(0.8);
     transition:filter 0.5s;
   }
-  #photo-bg::after {
+  photo-bg::after {
     content:''; position:absolute; inset:0;
     background:linear-gradient(
       to bottom,
@@ -441,6 +441,7 @@
 </script>
 </body>
 </html>
+
 
 
 
