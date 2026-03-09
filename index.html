@@ -16,7 +16,6 @@
     display: flex; align-items: center; justify-content: center;
   }
 
-  /* ─── SCREENS ─── */
   .screen {
     position: fixed; inset: 0;
     display: none;
@@ -25,15 +24,10 @@
   }
   .screen.active { display: flex; }
 
-  /* ══════════════════════════════
-     SCREEN 1 — LOGIN
-  ══════════════════════════════ */
   #s1 {
     background: radial-gradient(ellipse at 60% 40%, #1e003a 0%, #0d0010 70%);
   }
-  .stars-bg {
-    position: fixed; inset:0; pointer-events:none; z-index:0;
-  }
+  .stars-bg { position: fixed; inset:0; pointer-events:none; z-index:0; }
   .s1-card {
     position: relative; z-index: 1;
     background: rgba(255,255,255,0.04);
@@ -86,9 +80,6 @@
   }
   .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(160,60,255,0.55); }
 
-  /* ══════════════════════════════
-     SCREEN 2 — FUNNY MESSAGE
-  ══════════════════════════════ */
   #s2 {
     background: radial-gradient(ellipse at 40% 50%, #001a0d 0%, #000d08 70%);
     flex-direction: column; overflow-y:auto;
@@ -113,7 +104,6 @@
     font-size:0.72rem; letter-spacing:0.25em; text-transform:uppercase;
     color:rgba(128,255,188,0.35); margin-bottom:32px;
   }
-
   .funny-cards { display:flex; flex-direction:column; gap:14px; margin-bottom:32px; }
   .funny-card {
     background: rgba(255,255,255,0.04);
@@ -135,7 +125,6 @@
   .card-emoji { font-size:1.6rem; flex-shrink:0; margin-top:2px; }
   .card-text { font-size:0.95rem; color:rgba(200,255,230,0.82); line-height:1.6; }
   .card-text strong { color:#80ffbc; font-weight:600; }
-
   .s2-divider {
     display:flex; align-items:center; gap:12px;
     justify-content:center; margin:24px 0;
@@ -145,7 +134,6 @@
     background:linear-gradient(90deg,transparent,rgba(128,255,188,0.3),transparent);
   }
   .s2-divider span { color:#80ffbc; opacity:0.6; font-size:1rem; }
-
   .btn-green {
     padding:14px 40px; border:none; border-radius:50px; cursor:pointer;
     font-family:'Playfair Display',serif; font-style:italic; font-size:1.1rem;
@@ -156,17 +144,15 @@
   }
   .btn-green:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(45,255,160,0.5); }
 
-  /* ══════════════════════════════
-     SCREEN 3 — PHOTO + WISH
-  ══════════════════════════════ */
+  /* ✅ FIXED: was missing # before s3 and photo-bg */
   #s3 { padding:0; }
-  photo-bg {
+  #photo-bg {
     position:fixed; inset:0; z-index:0;
     background-size:cover; background-position:center;
     filter:brightness(0.45) saturate(0.8);
     transition:filter 0.5s;
   }
-  photo-bg::after {
+  #photo-bg::after {
     content:''; position:absolute; inset:0;
     background:linear-gradient(
       to bottom,
@@ -180,14 +166,12 @@
     background: radial-gradient(ellipse at 50% 40%, #1a0030 0%, #050008 100%) !important;
     filter: none !important;
   }
-
   #s3-content {
     position:relative; z-index:2;
     text-align:center; padding:32px 24px;
     max-width:560px; width:100%;
     animation: fadeUp 1s ease both;
   }
-
   .wish-label {
     font-size:0.68rem; letter-spacing:0.3em; text-transform:uppercase;
     color:rgba(255,200,220,0.5); margin-bottom:10px;
@@ -227,12 +211,8 @@
   }
   .wish-from strong { color:rgba(255,180,200,0.8); font-weight:400; }
 
-  /* Floating hearts canvas */
-  canvas {
-    position:fixed; inset:0; pointer-events:none; z-index:3;
-  }
+  canvas { position:fixed; inset:0; pointer-events:none; z-index:3; }
 
-  /* ─── Sparkle stars ─── */
   .sparkle {
     position:fixed; pointer-events:none; z-index:1;
     font-size:1rem; animation:sparkle-fall var(--d) linear infinite var(--delay);
@@ -248,14 +228,13 @@
 </head>
 <body>
 
-<!-- ★ SCREEN 1: LOGIN ★ -->
+<!-- SCREEN 1: LOGIN -->
 <div id="s1" class="screen active">
   <canvas class="stars-bg" id="starsCanvas"></canvas>
   <div class="s1-card">
     <div class="lock-icon">🔐</div>
     <div class="s1-title">Secret Access</div>
     <div class="s1-sub">Are You Ready For Your Surprise?</div>
-
     <div class="field">
       <label>Your Name</label>
       <input type="text" id="nameIn" placeholder="hint: I love to call you as..." maxlength="30"/>
@@ -269,13 +248,12 @@
   </div>
 </div>
 
-<!-- ★ SCREEN 2: FUNNY MESSAGE ★ -->
+<!-- SCREEN 2: FUNNY MESSAGE -->
 <div id="s2" class="screen">
   <div class="s2-inner">
     <div class="cake-big">🎂</div>
     <div class="s2-title">Hey <span id="s2-name">there</span>! 🎉</div>
     <div class="s2-tag">a little message before the big reveal</div>
-
     <div class="funny-cards">
       <div class="funny-card">
         <div class="card-emoji">🐛</div>
@@ -294,13 +272,12 @@
         <div class="card-text">Today is your day! No stand-ups, no PRs, no deadlines. Just <strong>cake, love, and you. 🎂</strong> Happy Birthday, superstar!</div>
       </div>
     </div>
-
     <div class="s2-divider"><span>🌟</span></div>
     <button class="btn-green" onclick="goToScreen3()">See Your Surprise 💚</button>
   </div>
 </div>
 
-<!-- ★ SCREEN 3: PHOTO + WISH ★ -->
+<!-- SCREEN 3: PHOTO + WISH -->
 <div id="s3" class="screen">
   <div id="photo-bg"></div>
   <div id="s3-content">
@@ -308,7 +285,7 @@
     <div class="wish-hb">Happy<br/>Birthday</div>
     <div class="wish-name" id="s3-name">✨</div>
     <div class="wish-divider"><span>♡</span></div>
-    <p class="wish-msg" id="s3-msg">"Wishing you all the joy, love, and happiness today and always. You deserve the world! 💕"</p>
+    <p class="wish-msg" id="s3-msg"></p>
     <div class="wish-from">with all my love &nbsp;·&nbsp; <strong id="s3-from">Your Love</strong></div>
   </div>
 </div>
@@ -317,13 +294,13 @@
 
 <script>
   /* ── CONFIG — EDIT THESE ── */
-  const SECRET_PASSWORD = "iloveyou";        // ← change password here
-  const BIRTHDAY_PERSON = "Prabhuuu";         // ← his name
-  const YOUR_NAME       = "Tublight💕";  // ← your name
+  const SECRET_PASSWORD = "iloveyou";
+  const BIRTHDAY_PERSON = "Prabhuuu";
+  const YOUR_NAME       = "Tublight💕";
   const BIRTHDAY_MSG    = "Every day with you feels like a feature I never knew I needed. You're my favourite person in the whole wide world. Happy Birthday, baby! 🎂💕";
-  const HIS_PHOTO_URL   = "photo.jpg";                // ← paste photo URL here, or leave blank
+  const HIS_PHOTO_URL   = "photo.jpg";   // ← make sure photo.jpg is uploaded to same GitHub repo
 
-  /* ── Stars on screen 1 ── */
+  /* Stars */
   const sc = document.getElementById('starsCanvas');
   const sctx = sc.getContext('2d');
   function drawStars() {
@@ -339,13 +316,11 @@
   }
   drawStars(); window.addEventListener('resize', drawStars);
 
-  /* ── Screen management ── */
   function show(id) {
     document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
   }
 
-  /* ── Screen 1: Login ── */
   function checkLogin() {
     const name = document.getElementById('nameIn').value.trim();
     const pass = document.getElementById('passIn').value.trim();
@@ -367,7 +342,6 @@
     if(e.key==='Enter') checkLogin();
   });
 
-  /* ── Screen 3: Setup ── */
   function goToScreen3() {
     document.getElementById('s3-name').textContent = BIRTHDAY_PERSON + ' ✨';
     document.getElementById('s3-msg').textContent  = '\u201c' + BIRTHDAY_MSG + '\u201d';
@@ -375,7 +349,7 @@
 
     const bg = document.getElementById('photo-bg');
     if (HIS_PHOTO_URL) {
-      bg.style.backgroundImage = `url(${HIS_PHOTO_URL})`;
+      bg.style.backgroundImage = `url('${HIS_PHOTO_URL}')`;
     } else {
       bg.classList.add('no-photo-bg');
     }
@@ -385,7 +359,7 @@
     addSparkles();
   }
 
-  /* ── Floating Hearts ── */
+  /* Floating Hearts */
   const canvas = document.getElementById('hearts');
   const ctx = canvas.getContext('2d');
   let W, H, particles=[];
@@ -425,7 +399,6 @@
     requestAnimationFrame(loop);
   }
 
-  /* ── Sparkles ── */
   function addSparkles(){
     const sp=['✨','⭐','💫','🌟'];
     for(let i=0;i<18;i++){
@@ -441,9 +414,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
